@@ -1,0 +1,85 @@
+/* Card Styling */
+.card {
+    width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background-color: white;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+/* Image Section */
+.image {
+    width: 100%;
+    height: 200px;
+}
+
+/* Image Styling */
+.card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 10px;
+}
+
+/* Information Section */
+.card-info {
+    padding: 10px;
+    text-align: left; /* Align all text to the left */
+}
+
+/* Name Styling */
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+/* Price and Discount Price */
+.prices {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.discount-price {
+    font-size: 14px;
+}
+
+.price-value {
+    font-weight: bold;
+    color: #000; /* Default price color (black) */
+}
+ .through{
+    color: gray;
+    text-decoration: line-through;
+}
+
+.discount-value {
+    font-weight: bold;
+    color: #000; /* Discounted price color (black) */
+}
+
+/* Apply line-through and light gray if there's a discount */
+.has-discount .price-value {
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+/* Quantity Available */
+.quantity {
+    font-size: 13px;
+    color: #2ecc71;
+    margin-top: 10px;
+}
+
+.quantity-value {
+    font-weight: bold;
+}

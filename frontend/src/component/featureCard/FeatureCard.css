@@ -1,0 +1,35 @@
+.featureCard{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin: 15px;
+    border-radius: 8px;
+    display: flex;
+    padding: 10px;
+    width: 300px;
+    height: 200px;
+    /* align-items: center; */
+}
+.featureLeft{
+    width: 70%;
+    text-align: left;
+}
+.featureLeft h1{
+    font-size: 50px;
+    color: var(--green);
+    margin: 0;
+    text-align: left;
+}
+.featureLeft h3{
+    color: rgb(67, 67, 67);
+}
+.featureLogo {
+    color: var(--green);
+    font-size: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featureTitle h1{
+    font-size: 25px;
+}

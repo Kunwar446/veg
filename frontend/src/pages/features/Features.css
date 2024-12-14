@@ -1,0 +1,11 @@
+.upperFeature, .lowerFeature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.howItWorks{
+    position: relative;
+    padding-left: 130px;
+    color: lightgray;
+}

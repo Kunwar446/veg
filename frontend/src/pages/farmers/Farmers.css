@@ -1,0 +1,73 @@
+/* Farmers Page Styles */
+.farmers-page {
+    padding: 20px;
+    text-align: center;
+    /* background-color: #f9f9f9; */
+    font-family: "Arial", sans-serif;
+    height: 80vh;
+
+  }
+  
+  .farmers-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--yellow);
+    border-bottom: 2px solid lightgray;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 50px;
+  }
+  
+  /* Farmers Container */
+  .farmers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Farmer Card */
+  .farmer-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .farmer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Farmer Photo */
+  .farmer-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Farmer Details */
+  .farmer-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: var(--yellow);
+  }
+  
+  .farmer-card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .farmerInfo{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 100%;
+  }

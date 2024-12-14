@@ -1,0 +1,87 @@
+.adminJob{
+    width: 30%;  
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    position: relative;
+    width: 350px;
+    height: fit-content;
+    margin: 10px;
+    padding: 10px;
+
+}
+.adminJob .title{
+    margin: 20px 0;
+    color: var(--t1);
+    
+}
+.adminJob .desc{
+    text-align: justify;
+    font-size: 14px;
+    margin: 15px 0;
+    width: 100%;
+}
+.adminJob .extraInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.adminJob .location  a{
+    margin: auto;
+    color: var(--bg1);
+}
+.adminJob .extraInfo .extraInfoLeft div{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.adminJob .extraInfo .extraInfoLeft div p{
+    font-size: 14px;
+}
+
+.adminJob .extraInfo .extraInfoRight {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    
+
+}
+.adminJob .extraInfo .extraInfoRight .actionBtn{
+    display:flex;
+    /* flex-direction: column; */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px;
+    right: 10px;
+    bottom: 10px;
+    gap: 10px;
+}
+.locationIcon{
+    color: #ffc001;
+    cursor: pointer;
+}
+.editIcon{
+    color:#28a745;
+    cursor: pointer;
+}
+
+.deleteIcon{
+    color: #de3f44;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    .adminJob .extraInfo{
+        flex-direction: column;
+        justify-content: end;
+    }
+    .adminJob{
+       width: 100%;
+       
+    }
+    
+
+}

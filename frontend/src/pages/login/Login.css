@@ -1,0 +1,15 @@
+.loginBox.formBox{
+  height: 400px
+}
+.forgetPass{
+  text-align: center;
+  font-size: 14px;
+  color: red;
+  position: relative;
+  top: 10px;
+}
+
+.wrong{
+  font-size: 12px;
+  color: red;
+}

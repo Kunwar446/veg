@@ -1,0 +1,98 @@
+.vegetables{
+    width: 100vw;
+    justify-content: left;
+    display: flex;
+    align-items: center;
+  
+}
+
+.add-more{
+    background-color:var(--social) ;
+    width: 60px ;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    overflow: hidden;
+    transition: 0.25s ease-in;
+}
+.add.remove{
+    transform: rotate(45deg);
+    background-color: red;
+    transition: 0.25s ease-in;
+}
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 10px 0;
+    position: relative;
+
+}
+
+
+
+/* Remove the border from the table */
+table {
+    border-collapse: collapse;
+  }
+  
+  /* Truncate long text and show "..." */
+  td.truncate {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Optional border between rows */
+  
+  }
+  
+  /* Optional: style the table header */
+  thead tr {
+    background-color: #f4f4f4;
+
+  }
+  
+  thead th {
+    font-weight: bold;
+  }
+  
+
+  .pagination{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    bottom: 100px;
+    left: 30px;
+  }
+  .tableControlButton{
+    width: 100px;
+    margin: 0 10px;
+    background-color: lightgray;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pageOf{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

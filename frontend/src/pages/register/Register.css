@@ -1,0 +1,19 @@
+.registerBox.formBox{
+    height: 600px;
+}
+.registerBox .inputContainer:nth-child(4){
+    height: 80px;
+}
+.registerBox .inputContainer  select{
+    appearance: none;
+    border: 2px solid var(--bg3);
+    border-radius: 6px;
+    width: 60%;
+    padding: 10px;
+    outline: var(--bg1);
+    background-color: transparent;
+
+}
+.role{
+    color: var(--t3);
+}
