@@ -7,7 +7,6 @@ import dotenv from "dotenv"
 dotenv.config({path:"./config.env"})
 import authRouter from "./router/auth.js";
 import userRouter from "./router/user.js";
-import jobRouter from "./router/job.js";
 import cloudinary from "cloudinary";
 import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
@@ -37,7 +36,6 @@ app.use(helmet.crossOriginResourcePolicy({policy:"cross-origin"}))
 
 // importing router
 app.use("/auth",authRouter);
-app.use("/job",jobRouter)
 app.use("/user",userRouter);
 app.use("/vegetable", vegetableRouter);
 app.use("/pesticide", pesticideRouter);
