@@ -44,7 +44,6 @@ export const login = async (req, res, next) => {
                 if (result) {
                      jwt.sign({ _id: user._id }, process.env.SECRET_KEY, async (err, token) => {
                         if (!err) {
-                            console.log("############", token)
                             res.status(200).cookie("token", token, { httpOnly: true, secure: true, sameSite: "strict" }).json({
                                 error: false,
                                 msg: "user logged in successfully",
@@ -52,7 +51,6 @@ export const login = async (req, res, next) => {
                                 token: token
                             })
                         } else {
-                            console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%", err)
                             res.status(300).json({
                                 error: true,
                                 msg: "user token error"
