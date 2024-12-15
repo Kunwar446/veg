@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {BrowserRouter,Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './pages/home/Home.jsx'
 import Register from './pages/register/Register.jsx'
 import Login from "./pages/login/Login.jsx";
@@ -20,7 +20,7 @@ import AdminOrder from "./pages/admin/orderAdmin/OrderAdmin.jsx";
 
 
 
-const App=()=>{
+const App = () => {
 
   const [notification, setNotification] = useState(null);
 
@@ -32,13 +32,13 @@ const App=()=>{
     setNotification(null); // Clear notification
   };
 
-  
-  
-  return(
+
+
+  return (
     <>
 
-     {/* Notification Box */}
-     {notification && (
+      {/* Notification Box */}
+      {notification && (
         <Notification
           status={notification.status}
           text={notification.text}
@@ -47,37 +47,32 @@ const App=()=>{
       )}
 
 
-    {/* Notification Box */}
-    {notification && <Notification status={notification.status} text={notification.text} />}
+      {/* Notification Box */}
+      {notification && <Notification status={notification.status} text={notification.text} />}
       <BrowserRouter>
-      
         <Routes>
-        <Route exact path="/register" element={<Register showNotification={showNotification} />} />
-        <Route  path="/login" element={<Login showNotification={showNotification} />} />
-          {/* admin mode */}
-          {/* <Route exact path="/postjob" element={<PostJob/>}/> */}
-          {/* <Route exact path="/admin/jobs" element={<Jobs/>}/> */}
-          <Route exact path="/" element={<Home/>}/>
-          <Route exact path="/dashboard" element ={<Dashboard/>}/>
-          <Route exact path="/admin/farmers" element ={<Farmers/>}/>
-          <Route exact path="/admin/pesticides" element ={<Pesticides/>}/>
-          <Route exact path="/admin/vegetables" element ={<Vegetables/>}/>
-          <Route exact path="/admin/orders" element={<AdminOrder/>}/>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register showNotification={showNotification} />} />
+          <Route path="/login" element={<Login showNotification={showNotification} />} />
           <Route path="/vegetable/:id" element={<VegetableDetail />} />
           <Route path="/pesticide/:id" element={<PesticideDetail />} />
-          <Route path="/orders/user" element={<Orders/>}/>
-        
+          <Route path="/orders/user" element={<Orders />} />
 
-          
-
-          
-          
-          
+          {/* Admin Routes */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin/farmers" element={<Farmers />} />
+          <Route path="/admin/pesticides" element={<Pesticides />} />
+          <Route path="/admin/vegetables" element={<Vegetables />} />
+          <Route path="/admin/orders" element={<AdminOrder />} />
         </Routes>
+
+
+
       </BrowserRouter>
     </>
   )
 };
 
 
-export default  App;
+export default App;
