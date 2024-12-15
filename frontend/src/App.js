@@ -53,7 +53,7 @@ const App=()=>{
       
         <Routes>
         <Route exact path="/register" element={<Register showNotification={showNotification} />} />
-        <Route exact path="/login" element={<Login showNotification={showNotification} />} />
+        <Route  path="/login" element={<Login showNotification={showNotification} />} />
           {/* admin mode */}
           {/* <Route exact path="/postjob" element={<PostJob/>}/> */}
           {/* <Route exact path="/admin/jobs" element={<Jobs/>}/> */}
