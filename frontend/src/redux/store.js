@@ -6,7 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig={
-    key:"vegggg-root",
+    key:"veggg-root",
     storage
 };
 
