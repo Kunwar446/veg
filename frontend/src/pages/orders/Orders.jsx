@@ -136,7 +136,7 @@ const Orders = () => {
 
       <div className="order-summary">
         <h2>Order Summary</h2>
-        <p>Total Amount: ${calculateTotal().toFixed(2)}</p>
+        <p>Total Amount: $Rs. {calculateTotal().toFixed(2)}</p>
         <p>Delivery Status: Processing (Estimated Delivery: Tomorrow)</p>
         <p>Payment Method: Cash on Delivery</p>
       </div>
