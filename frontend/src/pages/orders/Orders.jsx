@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import './Orders.css';
-import { setAllOrders, setDeleteOrder, setUpdateOrder } from '../../redux';
+import { setAllOrders } from '../../redux';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [editingOrder, setEditingOrder] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);  // Track the current page
   const [loading, setLoading] = useState(true);
   const loggedInUser = useSelector(state => state.user);
   const dispatch = useDispatch();
+
+  const itemsPerPage = 6;  // Number of products to display per page
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -32,32 +34,16 @@ const Orders = () => {
     fetchOrders();
   }, [loggedInUser, dispatch]);
 
-  const handleUpdateQuantity = async (orderId, newQuantity, productType) => {
-    try {
-      const endpoint = `${process.env.REACT_APP_END_POINT}/orders/${productType}/user/update/${orderId}`;
-      const response = await axios.put(endpoint, { quantity: newQuantity });
+  // Paginate orders based on the current page
+  const paginatedOrders = orders.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-      setOrders(prevOrders => 
-        prevOrders.map(order => 
-          order._id === orderId ? {...order, quantity: newQuantity, totalPrice: response.data.totalPrice} : order
-        )
-      );
-      setEditingOrder(null);
-    } catch (error) {
-      console.error('Error updating quantity:', error);
-    }
+  // Handle page navigation
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  const handleDeleteOrder = async (orderId, productType) => {
-    try {
-      const endpoint = `${process.env.REACT_APP_END_POINT}/orders/${productType}/user/remove/${orderId}`;
-      await axios.delete(endpoint);
-
-      setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
-      alert('Order deleted successfully!');
-    } catch (error) {
-      console.error('Error deleting order:', error);
-    }
+  const handleNextPage = () => {
+    if (currentPage * itemsPerPage < orders.length) setCurrentPage(currentPage + 1);
   };
 
   const calculateTotal = () => {
@@ -68,75 +54,49 @@ const Orders = () => {
 
   return (
     <div className="order-container">
-      <h1>My Orders</h1>
-      <table className="order-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order, index) => (
-            <tr key={order._id}>
-              <td>{index + 1}</td>
-              <td>{order.vegetable?.name || order.pesticide?.name}</td>
-              <td>{order.vegetable ? 'Vegetable' : 'Pesticide'}</td>
-              <td>
-                {order.vegetable?.pricePerKg || order.pesticide?.pricePerUnit}
-              </td>
-              <td>
-                {editingOrder === order._id ? (
-                  <input
-                    type="number"
-                    min="1"
-                    value={order.quantity}
-                    onChange={(e) => {
-                      setOrders(prevOrders => 
-                        prevOrders.map(o => 
-                          o._id === order._id ? {...o, quantity: Number(e.target.value), totalPrice: (order.vegetable?.pricePerKg || order.pesticide?.pricePerUnit) * Number(e.target.value)} : o
-                        )
-                      );
-                    }}
-                  />
-                ) : (
-                  `${order.quantity} ${order.vegetable?.unit || order.pesticide?.unit || ''}`
-                )}
-              </td>
-              <td>
-                {order.vegetable?.pricePerKg * order.quantity || order.pesticide?.pricePerUnit * order.quantity}
-              </td>
-              <td className='btnTd'>
-                {editingOrder === order._id ? (
-                  <button
-                    onClick={() => handleUpdateQuantity(order._id, order.quantity, order.vegetable ? 'vegetable' : 'pesticide')}
-                  >
-                    Save
-                  </button>
-                ) : (
-                  <button onClick={() => setEditingOrder(order._id)} className='editBtn'>
-                    Edit
-                  </button>
-                )}
-                <button
-                  onClick={() => handleDeleteOrder(order._id, order.vegetable ? 'vegetable' : 'pesticide')} className='deleteBtn'
-                >
-                  Delete
-                </button>
-              </td>
+      {/* <h1>My Orders</h1> */}
+      <div className="orders-table-wrapper">
+        <table className="order-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedOrders.map((order, index) => (
+              <tr key={order._id}>
+                <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                <td>{order.vegetable?.name || order.pesticide?.name}</td>
+                <td>{order.vegetable ? 'Vegetable' : 'Pesticide'}</td>
+                <td>{order.vegetable?.pricePerKg || order.pesticide?.pricePerUnit}</td>
+                <td>{`${order.quantity} ${order.vegetable?.unit || order.pesticide?.unit || ''}`}</td>
+                <td>{order.vegetable?.pricePerKg * order.quantity || order.pesticide?.pricePerUnit * order.quantity}</td>
+                <td className='tdBtn'>
+                  <button className="editBtn">Edit</button>
+                  <button className="deleteBtn">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <div className="order-summary">
+        {/* Pagination Controls */}
+        <div className="orderPagination">
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
+          <button onClick={handleNextPage} disabled={currentPage * itemsPerPage >= orders.length}>Next</button>
+        </div>
+      </div>
+
+      {/* Order Summary on the right */}
+      <div className="orderSummary">
         <h2>Order Summary</h2>
-        <p>Total Amount: $Rs. {calculateTotal().toFixed(2)}</p>
+        <p>Total Amount: Rs. {calculateTotal().toFixed(2)}</p>
         <p>Delivery Status: Processing (Estimated Delivery: Tomorrow)</p>
         <p>Payment Method: Cash on Delivery</p>
       </div>
